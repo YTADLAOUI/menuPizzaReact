@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM  from "react-dom/client";
 const pizzaData = [
   {
@@ -65,7 +65,14 @@ function Headar(){
 
 function Menu(){}
 
-function Footer(){}
+function Footer(){
+  const [currentTime,setCurrentTime]=useState( new Date().toLocaleTimeString())
+ setTimeout(()=>{
+    setCurrentTime(new Date().toLocaleTimeString())
+   },1000)
+return <footer>{currentTime}, We're currently open</footer>
+  // return(React.createElement('footer',null,"We're currently open"))
+}
 
 function Pizza(){ 
   return(
