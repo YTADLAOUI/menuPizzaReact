@@ -47,9 +47,26 @@ const pizzaData = [
 
 
 function App() {
-return <div><h1>Hello react!</h1><Pizza/></div>
-
+return(
+<div>
+  <Headar/>
+  <Pizza/>
+  <Pizza/>
+  <Pizza/>
+  <Footer/>
+</div>
+) 
 }
+
+function Headar(){
+
+  return (<div><h1>Fast React Pizza Co.</h1></div>)
+}
+
+function Menu(){}
+
+function Footer(){}
+
 function Pizza(){ 
   return(
     <div>
