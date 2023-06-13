@@ -51,13 +51,18 @@ return <div><h1>Hello react!</h1><Pizza/></div>
 
 }
 function Pizza(){ 
-  return <h2>Pizza</h2>
+  return(
+    <div>
+      <img src="pizzas/spinaci.jpg" alt="Pizza spinaci"/>
+        <h2>Pizza Spinaci</h2>
+        <p>tomato,mozarella,spanich,and ricotta chesse </p>
+    </div>
+     );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 <React.StrictMode>
-  <App/>
-  
+  <App/> 
 </React.StrictMode>
 );
