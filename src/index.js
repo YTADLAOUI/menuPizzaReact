@@ -112,7 +112,7 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {currentTime},{open ?<Order openHour={openHour}  closeHour={closeHour}/>:<p>
+      <span className="timedynamic">{currentTime}</span>{open ?<Order openHour={openHour}  closeHour={closeHour}/>:<p>
           We're happy to welcome you between {openHour}:00 and {closeHour}:00.
         </p>} 
     </footer>

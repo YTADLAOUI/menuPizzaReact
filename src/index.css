@@ -177,6 +177,10 @@ body {
 .btn:hover {
   background-color: #e9bb24;
 }
+.timedynamic{
+  display: flex;
+  justify-content: center;
+}
 
 /*
 SPACING SYSTEM (px)
