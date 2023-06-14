@@ -47,49 +47,67 @@ const pizzaData = [
 ];
 
 
+
 function App() {
-return(
-<div className="container">
-  <Headar/>
-  <Menu />
-  <Footer/>
-</div>
-) 
-}
-
-function Headar(){
-
-  return (<header className="header"><h1 >Fast React Pizza Co.</h1></header>)
-}
-
-function Menu(){
-  console.log(pizzaData.map(el=>(el.name)
-  ))
-  return(
-  
-  <main className="menu">
-    <h2>Our Menu</h2>
-  <Pizza/>
-  </main>)
-}
-
-function Footer(){
-  const [currentTime,setCurrentTime]=useState( new Date().toLocaleTimeString())
- setTimeout(()=>{
-    setCurrentTime(new Date().toLocaleTimeString())
-   },1000)
-return <footer className="footer">{currentTime}, We're currently open</footer>
-  // return(React.createElement('footer',null,"We're currently open"))
-}
-
-function Pizza(){ 
-  return(
-    <div className="pizza">
-      <img src="pizzas/spinaci.jpg" alt="Pizza spinaci"/>
-        <h3>Pizza Spinaci</h3>
-        <p>tomato,mozarella,spanich,and ricotta chesse </p>
+  return (
+    <div className="container">
+      <Header />
+      <Menu pizzaData={pizzaData} />
+      <Footer />
     </div>
-     );
+  );
+}
+
+function Header() {
+  return <header className="header"><h1>Fast React Pizza Co.</h1></header>;
+}
+
+function Menu(props) {
+  const { pizzaData } = props;
+
+  return (
+    <main className="menu">
+      <h2>Our Menu</h2>
+      {pizzaData.map((pizza) => (
+        <Pizza
+          name={pizza.name}
+          image={pizza.photoName}
+          ingredient={pizza.ingredients}
+          price={pizza.price}
+          soldOut={pizza.soldOut}
+        />
+      ))}
+    </main>
+  );
+}
+
+function Footer() {
+  const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
+
+ 
+  setTimeout(()=>{
+    setCurrentTime(new Date().toLocaleTimeString())
+  },1000)
+
+  return (
+    <footer className="footer">
+      {currentTime}, We're currently open
+    </footer>
+  );
+}
+
+function Pizza(props) {
+  const { name, image, ingredient, price, soldOut } = props;
+
+  return (
+    <div className="pizza">
+      <img src={image} alt={name} />
+      <h3>{name}</h3>
+      <p>{ingredient}</p>
+      <p>{price}</p>
+      <p>{soldOut}</p>
+    </div>
+  );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
