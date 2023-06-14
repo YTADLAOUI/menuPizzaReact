@@ -64,11 +64,16 @@ function Header() {
 
 function Menu(props) {
   const { pizzaData } = props;
+ const nbrMenu=pizzaData.length
+  console.log(nbrMenu);
 
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      {pizzaData.map((pizza) => (
+      <ul className="pizzas">
+      {
+        (nbrMenu>0)?
+      pizzaData.map((pizza) => (
         <Pizza
           name={pizza.name}
           image={pizza.photoName}
@@ -76,7 +81,10 @@ function Menu(props) {
           price={pizza.price}
           soldOut={pizza.soldOut}
         />
-      ))}
+      )): <p>We're still working on our menu. Please come back later :)</p>
+      }
+      </ul>
+    
     </main>
   );
 }
@@ -100,13 +108,15 @@ function Pizza(props) {
   const { name, image, ingredient, price, soldOut } = props;
 
   return (
-    <div className="pizza">
+    <li className={`pizza ${soldOut?"sold-out" : ""}`}>
       <img src={image} alt={name} />
-      <h3>{name}</h3>
+      <div>
+        <h3>{name}</h3>
       <p>{ingredient}</p>
-      <p>{price}</p>
-      <p>{soldOut}</p>
-    </div>
+      <span>{soldOut ? "SOLD OUT":price}</span>
+     </div>
+      
+    </li>
   );
 }
 
