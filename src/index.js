@@ -88,10 +88,23 @@ function Menu(props) {
     </main>
   );
 }
-
+function Order({ closeHour, openHour }) {
+  return (
+    <div className="order">
+      <p>
+        We're open from {openHour}:00 to {closeHour}:00. Come visit us or order
+        online.
+      </p>
+      <button className="btn">Order</button>
+    </div>
+  );
+}
 function Footer() {
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
-
+  const hour=new Date().getHours();
+  const openHour= 12;
+  const closeHour=22;
+  const open = hour>= openHour && hour<=closeHour
  
   setTimeout(()=>{
     setCurrentTime(new Date().toLocaleTimeString())
@@ -99,7 +112,9 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {currentTime}, We're currently open
+      {currentTime},{open ?<Order openHour={openHour}  closeHour={closeHour}/>:<p>
+          We're happy to welcome you between {openHour}:00 and {closeHour}:00.
+        </p>} 
     </footer>
   );
 }
