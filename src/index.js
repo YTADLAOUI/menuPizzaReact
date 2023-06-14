@@ -51,7 +51,7 @@ function App() {
 return(
 <div className="container">
   <Headar/>
-  <Menu/>
+  <Menu />
   <Footer/>
 </div>
 ) 
@@ -63,12 +63,12 @@ function Headar(){
 }
 
 function Menu(){
+  console.log(pizzaData.map(el=>(el.name)
+  ))
   return(
+  
   <main className="menu">
     <h2>Our Menu</h2>
-  <Pizza/>
-  <Pizza/>
-  <Pizza/>
   <Pizza/>
   </main>)
 }
@@ -84,7 +84,7 @@ return <footer className="footer">{currentTime}, We're currently open</footer>
 
 function Pizza(){ 
   return(
-    <div>
+    <div className="pizza">
       <img src="pizzas/spinaci.jpg" alt="Pizza spinaci"/>
         <h3>Pizza Spinaci</h3>
         <p>tomato,mozarella,spanich,and ricotta chesse </p>
